@@ -1,0 +1,42 @@
+from collections import Counter
+
+def fruit_sales_metrics(fruit_list):
+    # Total sales
+    total_sales = 0
+    # Count occurrences of each fruit (to find the most sold fruit)
+    fruit_counter = Counter()
+    
+    # Iterate over the list of tuples
+    for fruit, price, quantity in fruit_list:
+        # Update total sales
+        total_sales += price * quantity
+        # Update fruit count
+        fruit_counter[fruit] += quantity
+    
+    # Average sales (divided by the number of tuples)
+    avg_sales = total_sales / len(fruit_list)
+    
+    # Find the most sold fruit (max by quantity)
+    most_sold_fruit = fruit_counter.most_common(1)[0][0]
+    
+    # Return results as a dictionary or tuple
+    return {
+        "total_sales": total_sales,
+        "avg_sales": avg_sales,
+        "most_sold_fruit": most_sold_fruit
+    }
+
+
+# Example usage
+fruit_data = [
+    ("Apple", 2.5, 10),
+    ("Banana", 1.2, 20),
+    ("Orange", 3.0, 5),
+    ("Banana", 1.2, 10),
+    ("Apple", 2.5, 15),
+]
+
+results = fruit_sales_metrics(fruit_data)
+print("Total Sales:", results["total_sales"])
+print("Average Sales:", results["avg_sales"])
+print("Most Sold Fruit:", results["most_sold_fruit"])
