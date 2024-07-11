@@ -1,2 +1,2 @@
 # Competative
-All in python and C++ from geeks and geeks and Leetcode
+All in python from geeks and geeks and Leetcode
